@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serving — Web Design & Development</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans+Expanded:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section id="hero" class="hero" aria-label="Hero">
+      <header class="hero-header">
+        <div class="hero-logo">
+          <img src="zekiservlogo.svg" alt="Zekiserv Logo" width="150" height="50">
+        </div>
+        <!-- <nav class="hero-nav" aria-label="Main">
+          <ul class="hero-nav-list">
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav> -->
+      </header>
+      <div id="dvd-text" class="dvd-text dvd-text-measure" aria-hidden="true">With Purpose</div>
+      <canvas id="dvd-canvas" class="dvd-canvas"></canvas>
+    </section>
+
+
+    <section id="about" class="about" aria-labelledby="about-heading">
+      <h2 id="about-heading" class="visually-hidden">About</h2>
+      <p class="about-text">
+        zekiserv is a digital studio with big ambitions to serve people through design and development. 
+        Crafting one app at a time with purpose, passion and love.
+      </p>
+    </section>
+
+
+    <!-- <section id="projects" class="projects" aria-labelledby="projects-heading">
+      <h2 id="projects-heading" class="visually-hidden">Projects</h2>
+      <ul class="projects-list">
+        <li class="project-item" data-project='{"name":"Project One","description":"A responsive e-commerce platform built for a fashion retailer. We handled brand identity, UI design, and front-end development to create a fast, accessible shopping experience.","images":[{"src":"https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop","title":"Homepage Design","caption":"Clean, modern interface with focus on product showcase"},{"src":"https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&h=600&fit=crop","title":"Product Detail View","caption":"Detailed product pages with high-quality imagery"},{"src":"https://images.unsplash.com/photo-1545235617-7a424c1a60cc?w=800&h=600&fit=crop","title":"Shopping Cart","caption":"Streamlined checkout process for better conversion"}]}'>
+          <div class="project-item-capsule">
+            <div class="project-capsule-wrapper">
+              <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=200&h=200&fit=crop" alt="Project One" class="project-image" width="200" height="200">
+            </div>
+            <h3 class="project-name">Project One</h3>
+            <button type="button" class="ghost-btn">About this project</button>
+          </div>
+        </li>
+        <li class="project-item" data-project='{"name":"Project Two","description":"Brand and web presence for an architecture studio. We designed a minimal site that showcases their portfolio and process, with a custom CMS for easy updates.","images":[{"src":"https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&h=600&fit=crop","title":"Portfolio Gallery","caption":"Showcasing architectural projects with large format imagery"},{"src":"https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&h=600&fit=crop","title":"Project Detail","caption":"In-depth case studies with process documentation"}]}'>
+          <div class="project-item-capsule">
+            <div class="project-capsule-wrapper">
+              <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=200&h=200&fit=crop" alt="Project Two" class="project-image" width="200" height="200">
+            </div>
+            <h3 class="project-name">Project Two</h3>
+            <button type="button" class="ghost-btn">About this project</button>
+          </div>
+        </li>
+        <li class="project-item" data-project='{"name":"Project Three","description":"A web app for project management and team collaboration. Focus on usability, real-time updates, and a clear visual hierarchy for tasks and deadlines.","images":[{"src":"https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop","title":"Dashboard View","caption":"Overview of projects and tasks at a glance"},{"src":"https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop","title":"Task Management","caption":"Organized task lists with drag-and-drop functionality"},{"src":"https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=600&fit=crop","title":"Team Collaboration","caption":"Real-time updates and team communication features"},{"src":"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop","title":"Analytics & Reports","caption":"Data visualization and progress tracking"}]}'>
+          <div class="project-item-capsule">
+            <div class="project-capsule-wrapper">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=200&h=200&fit=crop" alt="Project Three" class="project-image" width="200" height="200">
+            </div>
+            <h3 class="project-name">Project Three</h3>
+            <button type="button" class="ghost-btn">About this project</button>
+          </div>
+        </li>
+        <li class="project-item" data-project='{"name":"Project Four","description":"Website redesign for a non-profit. We improved information architecture, accessibility, and donation flows while keeping their voice and mission central.","images":[{"src":"https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&h=600&fit=crop","title":"Homepage","caption":"Welcoming design that communicates the organization mission"},{"src":"https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop","title":"Donation Flow","caption":"Simplified donation process with clear call-to-action"}]}'>
+          <div class="project-item-capsule">
+            <div class="project-capsule-wrapper">
+              <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=200&h=200&fit=crop" alt="Project Four" class="project-image" width="200" height="200">
+            </div>
+            <h3 class="project-name">Project Four</h3>
+            <button type="button" class="ghost-btn">About this project</button>
+          </div>
+        </li>
+      </ul>
+    </section> -->
+
+    <footer id="contact" class="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading" class="visually-hidden">Contact</h2>
+      <div class="contact-row">
+        <a id="contact-email-link" href="#" data-obfuscated="bWFpbHRvOnpla2lzZXJ2QGdtYWlsLmNvbQ==">Loading...</a>
+        <span class="contact-sep">·</span>
+        <a id="contact-phone-link" href="#" data-obfuscated="dGVsOis2MyA5MTYgMzg3IDQ5ODI=">Loading...</a>
+      </div>
+    </footer>
+  </main>
+
+  <div id="project-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-inner">
+      <button type="button" class="modal-close" aria-label="Close modal">&times;</button>
+      <div class="modal-gallery">
+        <div class="modal-gallery-inner"></div>
+      </div>
+      <div class="modal-sidebar">
+        <h2 id="modal-title" class="modal-title"></h2>
+        <div class="modal-description"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
