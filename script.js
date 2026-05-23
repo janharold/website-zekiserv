@@ -408,24 +408,13 @@
 
 (function () {
   function decodeContactInfo() {
-    const emailLink = document.getElementById('contact-email-link');
-    const phoneLink = document.getElementById('contact-phone-link');
-    
-    if (emailLink && emailLink.dataset.obfuscated) {
+    document.querySelectorAll('[data-obfuscated]').forEach(function (link) {
       try {
-        const decoded = atob(emailLink.dataset.obfuscated);
-        emailLink.href = decoded;
-        emailLink.textContent = decoded.replace('mailto:', '');
+        const decoded = atob(link.dataset.obfuscated);
+        link.href = decoded;
+        link.textContent = decoded.replace(/^(mailto:|tel:)/, '');
       } catch (e) {}
-    }
-    
-    if (phoneLink && phoneLink.dataset.obfuscated) {
-      try {
-        const decoded = atob(phoneLink.dataset.obfuscated);
-        phoneLink.href = decoded;
-        phoneLink.textContent = decoded.replace('tel:', '');
-      } catch (e) {}
-    }
+    });
   }
   
   if (document.readyState === 'loading') {
