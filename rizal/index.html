@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rizal — A quiet place to write</title>
+  <meta name="description" content="A minimalist markdown editor for macOS. Live formatting, typewriter focus, ambient soundscapes, and local-first plain text notes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300..900&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    .rizal-hero {
+      width: 100%;
+      min-height: 70vh;
+      background: #0d0f12;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: clamp(3rem, 7vw, 6rem) 1.5rem;
+      position: relative;
+    }
+
+    .rizal-icon {
+      width: 120px;
+      height: 120px;
+      border-radius: 26px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      margin-bottom: 2rem;
+      transition: transform 0.25s ease;
+    }
+
+    .rizal-icon:hover {
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    .rizal-title {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.5rem;
+      line-height: 1.1;
+    }
+
+    .rizal-tagline {
+      font-family: 'Newsreader', Georgia, serif;
+      font-style: italic;
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      color: #dfa863;
+      margin: 0 0 1.5rem;
+      font-weight: 400;
+    }
+
+    .rizal-summary {
+      max-width: 640px;
+      font-size: clamp(1rem, 2vw, 1.125rem);
+      color: #a0a6b1;
+      line-height: 1.65;
+      margin: 0 auto 2.5rem;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .appstore-badge-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: #ffffff;
+      color: #000000;
+      padding: 0.85rem 1.65rem;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    }
+
+    .appstore-badge-btn:hover {
+      background: #f0f0f0;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    }
+
+    .appstore-badge-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .ghost-link-btn {
+      display: inline-flex;
+      align-items: center;
+      color: #a0a6b1;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0.85rem 1.5rem;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .ghost-link-btn:hover {
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Showcase Section */
+    .features-section {
+      width: 100%;
+      max-width: 1040px;
+      padding: clamp(3rem, 7vw, 5.5rem) 1.5rem;
+      margin: 0 auto;
+    }
+
+    .section-headline {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-headline h2 {
+      font-size: clamp(1.85rem, 4vw, 2.5rem);
+      font-weight: 700;
+      margin: 0 0 0.75rem;
+      letter-spacing: -0.015em;
+    }
+
+    .section-headline p {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: #fafafa;
+      border: 1px solid #e8e8e8;
+      border-radius: 16px;
+      padding: 2rem;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-2px);
+      border-color: #d0d0d0;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    }
+
+    .feature-icon-bubble {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: #000;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 0 0 0.6rem;
+      letter-spacing: -0.01em;
+    }
+
+    .feature-card p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* System Requirements & Privacy Banner */
+    .specs-strip {
+      width: 100%;
+      background: #f4f4f4;
+      border-top: 1px solid #e5e5e5;
+      border-bottom: 1px solid #e5e5e5;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+    }
+
+    .specs-strip-content {
+      max-width: 720px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .specs-strip strong {
+      color: #111;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="legal-header">
+      <a href="../index.html" class="legal-logo">
+        <img src="../zekiservlogo.svg" alt="Zekiserv Logo" width="150" height="50">
+      </a>
+      <p class="legal-header-version">Mac App Store Edition</p>
+    </header>
+
+    <section class="rizal-hero">
+      <img src="app-icon.png" alt="Rizal Application Icon" class="rizal-icon" width="120" height="120">
+      <h1 class="rizal-title">Rizal</h1>
+      <p class="rizal-tagline">A quiet place to write.</p>
+      <p class="rizal-summary">
+        A minimalist Markdown editor crafted for macOS. Live formatting renders in place, ambient soundscapes ease your concentration, and your words stay strictly on your local disk as plain text.
+      </p>
+
+      <div class="cta-row">
+        <a href="#download" class="appstore-badge-btn">
+          <svg viewBox="0 0 170 170" aria-hidden="true">
+            <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.69-3.04-7.67-7.85-11.94-14.42-6.19-9.5-11.05-20.73-14.58-33.7-3.53-12.97-5.3-25.18-5.3-36.63 0-16.14 4.12-29.6 12.37-40.38 8.25-10.78 18.66-16.28 31.23-16.51 5.34 0 11.07 1.37 17.18 4.11 6.11 2.74 10.15 4.18 12.12 4.32 1.63 0 5.86-1.5 12.69-4.51 6.83-3.01 12.63-4.32 17.4-3.93 13.25.84 23.88 5.62 31.89 14.34-11.55 7.02-17.21 16.59-16.99 28.71.22 9.56 3.86 17.65 10.92 24.26 7.06 6.61 15.54 10.42 25.44 11.43-2.61 8.04-5.97 16.36-10.09 24.96zM119.22 33.16c0-7.39 2.66-14.28 7.98-20.67 5.32-6.39 11.83-10.56 19.53-12.49.54 2.83.81 5.44.81 7.83 0 7.39-2.77 14.44-8.31 21.15-5.54 6.71-12.28 10.78-20.22 12.22-.33-2.4-.49-4.08-.49-5.04z"/>
+          </svg>
+          Download on Mac App Store
+        </a>
+        <a href="support.html" class="ghost-link-btn">Support & Help</a>
+      </div>
+    </section>
+
+    <section class="features-section" aria-labelledby="features-heading">
+      <div class="section-headline">
+        <h2 id="features-heading">Engineered for Writing Flow</h2>
+        <p>A companion that gets out of your way, keeping your attention on the paragraph in front of you.</p>
+      </div>
+
+      <div class="features-grid">
+        <article class="feature-card">
+          <div class="feature-icon-bubble">✍️</div>
+          <h3>Live Markdown</h3>
+          <p>Format headings, quotes, bold, and lists seamlessly. Markdown markup stays hidden while reading and only reveals itself on the line your caret touches.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon-bubble">🕯️</div>
+          <h3>Manila & Lamplight</h3>
+          <p>Two artisanal palettes designed for writers. Manila paper with iron-gall ink blue for daytime clarity; lamplight warm black with an amber caret for nocturnal focus.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon-bubble">🌧️</div>
+          <h3>Generative Audio Mixer</h3>
+          <p>Ambient soundscapes (rain, fire, wind, night) synthesized live in Web Audio. Mix your atmosphere and pair it with tactile typewriter, mechanical, or soft key clicks.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon-bubble">🎯</div>
+          <h3>Typewriter Focus</h3>
+          <p>Keep your active cursor vertically centered as your thoughts flow. Dim surrounding paragraphs or lines to keep your current thought front and center.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon-bubble">📂</div>
+          <h3>Local-First Library</h3>
+          <p>Your notes belong to you. Saved directly to your Mac as standard <code>.md</code> files. No database, zero cloud lock-in, and instant compatibility with iCloud Drive and Git.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon-bubble">🔒</div>
+          <h3>Private by Architecture</h3>
+          <p>No telemetry, no tracking analytics, no user accounts, and zero remote storage. Rizal operates entirely offline on your Mac.</p>
+        </article>
+      </div>
+    </section>
+
+    <aside class="specs-strip" id="download">
+      <div class="specs-strip-content">
+        <p><strong>System Requirements:</strong> Requires macOS 11.0 Big Sur or later. Built as a universal binary optimized for Apple Silicon (M1/M2/M3/M4) and Intel Macs.</p>
+        <p>Questions or need help? Check our <a href="support.html">Support Page</a> or read our <a href="privacy.html">Privacy Policy</a>.</p>
+      </div>
+    </aside>
+
+    <footer class="contact legal-footer" aria-label="Footer">
+      <div class="contact-row">
+        <a href="privacy.html">Privacy Policy</a>
+        <span class="contact-sep">·</span>
+        <a href="support.html">Support</a>
+        <span class="contact-sep">·</span>
+        <a href="../index.html">Zekiserv Home</a>
+        <span class="contact-sep">·</span>
+        <a id="contact-email-link" href="#" data-obfuscated="bWFpbHRvOnpla2lzZXJ2QGdtYWlsLmNvbQ==">Loading...</a>
+      </div>
+    </footer>
+  </main>
+
+  <script src="../script.js"></script>
+</body>
+</html>
